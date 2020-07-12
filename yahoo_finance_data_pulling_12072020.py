@@ -8,13 +8,13 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import urllib.request as ur
 
-
+global df
 global stock
 stock='UPL.NS'
 stock
-
+global ls
 ####Income Statement
-
+global index
 index=stock
 url_is_ind="https://in.finance.yahoo.com/quote/"+index+"/financials?p="+index
 url_is = "https://finance.yahoo.com/quote/" + index + "/financials?p=" + index
@@ -136,7 +136,7 @@ stat_st.head()
 
 #stat_st.columns
 ####Price####
-global index
+#global index
 index=stock
 url_bs = "https://in.finance.yahoo.com/quote/"+index+"/"
 url_bs
@@ -157,7 +157,7 @@ import numpy as np
 Balance_st.head()## remov ecommon stock
 
 ##### Get data from Balance sheet for your sheet
-global ls
+
 ls=[]
 for x in Balance_st.loc['31/3/2019']:
         y=x.replace(",","")
@@ -224,7 +224,7 @@ ls=ls.rename(index={0:stock})
 if(len(df)>1):
     df=df.append(ls,sort=False)
 else:
-    global df
+    
     df=pd.DataFrame()
 df.head()
 #ls['% Liabilities']=float(ls.iloc[0]['Total Liabilities'])/float(ls.iloc[0]['Total Assets'])
