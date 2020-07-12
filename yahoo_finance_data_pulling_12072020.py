@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 import urllib.request as ur
 
 global df
+df=pd.DataFrame()
 global stock
 stock='UPL.NS'
 stock
@@ -221,10 +222,10 @@ profit_mean=ls2.mean()
 ls['Avg Profit Growth%']=(float(Income_st.loc['31/3/2019','Net income'].replace(",",""))/profit_mean-1)*100
 ls=ls.rename(index={0:stock})
 
-if(len(df)>1):
-    df=df.append(ls,sort=False)
+if(len(df)==0):
+   break
 else:
-    
+     df=df.append(ls,sort=False)
     df=pd.DataFrame()
 df.head()
 #ls['% Liabilities']=float(ls.iloc[0]['Total Liabilities'])/float(ls.iloc[0]['Total Assets'])
