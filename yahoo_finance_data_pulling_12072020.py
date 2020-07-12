@@ -7,11 +7,11 @@ Created on Sun Jul 12 19:51:45 2020
 import pandas as pd
 from bs4 import BeautifulSoup
 import urllib.request as ur
-
+import sys
 global df
 df=pd.DataFrame()
 global stock
-stock='UPL.NS'
+stock=sys.argv[1]
 stock
 global ls
 ####Income Statement
@@ -223,9 +223,9 @@ ls['Avg Profit Growth%']=(float(Income_st.loc['31/3/2019','Net income'].replace(
 ls=ls.rename(index={0:stock})
 
 if(len(df)==0):
-   break
-else:
-     df=df.append(ls,sort=False)
-    df=pd.DataFrame()
+   print("yo")
+df=df.append(ls,sort=False)
+     #df=pd.DataFrame()
 df.head()
+df.to_csv("pbrr.csv")
 #ls['% Liabilities']=float(ls.iloc[0]['Total Liabilities'])/float(ls.iloc[0]['Total Assets'])
